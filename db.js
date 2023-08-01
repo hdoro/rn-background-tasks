@@ -11,7 +11,7 @@ function openDatabase() {
     }
   }
 
-  const db = SQLite.openDatabase('db.db')
+  const db = SQLite.openDatabase('db.feed', '2')
   return db
 }
 
@@ -23,7 +23,7 @@ let mounted = false
 if (!mounted) {
   db.transaction((tx) => {
     tx.executeSql(
-      'create table if not exists items (id integer primary key not null, createdAt text);',
+      `create table if not exists items (id integer primary key not null, createdAt text not null, createdByEvent text);`,
     )
   })
   mounted = true
