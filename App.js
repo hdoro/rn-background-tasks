@@ -1,13 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import addItem from './addItem'
+import useQuery from './useQuery'
 
 export default function App() {
+  const items = useQuery('select * from items', [])
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>Feed items</Text>
       <StatusBar style="auto" />
+      <Button onPress={addItem} title="New item" />
+      {items?.map((item) => (
+        <View key={JSON.stringify(item)}>
+          <Text>{JSON.stringify(item, null, 2)}</Text>
+        </View>
+      ))}
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -17,4 +26,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
