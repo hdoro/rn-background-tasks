@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "background-tasks",
-    "slug": "background-tasks",
+    "name": "[AllSpark demo] background refresh",
+    "slug": "allspark-demo-background-refresh",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

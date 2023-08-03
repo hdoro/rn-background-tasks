@@ -3,6 +3,7 @@ import * as Notifications from 'expo-notifications'
 import { useEffect, useRef, useState } from 'react'
 import { Platform } from 'react-native'
 import addItem from './addItem'
+import { EAS_PROJECT_ID } from './constants'
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -24,6 +25,8 @@ export default function useNotifications() {
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
         setNotification(notification)
+
+        // When a notification arrives, add item to database
         addItem(`notification--${notification.request.identifier}`)
       })
 
@@ -81,7 +84,7 @@ async function registerForPushNotificationsAsync() {
     }
     token = (
       await Notifications.getExpoPushTokenAsync({
-        projectId: 'backgroundtasks',
+        projectId: EAS_PROJECT_ID,
       })
     ).data
     console.log(token)
