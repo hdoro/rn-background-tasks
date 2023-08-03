@@ -16,10 +16,7 @@
       "supportsTablet": true,
       "infoPlist": {
         "UIBackgroundModes": ["fetch", "processing"],
-        "BGTaskSchedulerPermittedIdentifiers": [
-          "com.transistorsoft.fetch",
-          "com.transistorsoft.refreshfeed"
-        ]
+        "BGTaskSchedulerPermittedIdentifiers": ["com.transistorsoft.fetch"]
       },
       "bundleIdentifier": "com.allspark.backgroundtasks"
     },
@@ -33,6 +30,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["react-native-background-fetch"]
+    "plugins": ["react-native-background-fetch", "expo-notifications"]
   }
 }

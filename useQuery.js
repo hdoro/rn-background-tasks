@@ -19,6 +19,7 @@ export default function useQuery(query, params) {
   useEffect(() => {
     if (!params || !query) return
 
+    runQuery(query, params)
     const interval = setInterval(() => runQuery(query, params), 1000)
 
     return () => clearInterval(interval)
